@@ -14,11 +14,6 @@ public class CharacterController : MonoBehaviour {
     Vector3 direction;
 
 
-    public Vector3 Direction
-    {
-        get { return direction; }
-    }
-
     public Quaternion TargetRotation
     {
         get { return targetRotation; }

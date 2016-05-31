@@ -42,12 +42,12 @@ public class CameraController : MonoBehaviour
     {
         MoveTo();
 
-        //LookAt();
+        LookAt();
     }
 
     void MoveTo()
     {
-        destination = charController.Direction + offsetFromTarget;
+        destination = charController.TargetRotation * offsetFromTarget;
         destination += target.position;
         transform.position = destination;
     }
@@ -55,8 +55,7 @@ public class CameraController : MonoBehaviour
     void LookAt()
     {
         float eulerYAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, target.eulerAngles.y, ref rotateSpeed, cameraSmooth);
-        float eulerXAngle = Mathf.SmoothDampAngle(transform.eulerAngles.x, target.eulerAngles.x + xTilt, ref rotateSpeed, cameraSmooth);
-        transform.rotation = Quaternion.Euler(eulerXAngle, eulerYAngle, 0);
+        transform.rotation = Quaternion.Euler(transform.eulerAngles.x, eulerYAngle, 0);
     }
 
 }
