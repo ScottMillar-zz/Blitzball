@@ -46,13 +46,19 @@ public class CharacterController : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        GetInput();
-        Turn();
+        if (GetComponent<Player>().inPossession)
+        {
+            GetInput();
+            Turn();
+        }
 	}
 
     void FixedUpdate()
     {
-        Swim();
+        if (GetComponent<Player>().inPossession)
+        {
+            Swim();
+        }
     }
 
     void Swim()
